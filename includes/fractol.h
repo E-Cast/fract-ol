@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/22 09:29:55 by ecastong         ###   ########.fr       */
+/*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
+/*   Updated: 2024/04/22 09:20:42 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#ifndef FRACTOL_H
+# define FRACTOL_H
+# include <stdio.h>
+# include "libft.h"
 
-int	main(void)
-{
-	printf("test %li\n", ft_strlen("1234567890"));
-}
+#endif
