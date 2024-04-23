@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/22 23:40:05 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:56:19 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,25 @@
 #  define WIN_HEIGHT 720
 # endif
 
+typedef enum e_fractals
+{
+	MANDEL,
+	JULIA,
+	SHIP,
+	NEWTON
+}	t_fractals;
+
+typedef struct s_fractol
+{
+	mlx_t		*mlx;
+	mlx_image_t	*image;
+	int			x;
+	int			y;
+	t_fractals	fractal;
+}	t_fractol;
+
+void	keyhook(void *param);
+void	scrollhook(double xdelta, double ydelta, void *param);
+int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
 #endif
