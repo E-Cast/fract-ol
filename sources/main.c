@@ -6,20 +6,27 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/23 00:09:47 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/23 00:26:41 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	keyhook(mlx_key_data_t keydata, void *param)
+void	keyhook(void *param)
 {
-	// mlx_t	*mlx;
+	mlx_t	*mlx;
 
-	// mlx = param;
-	//exit the loop
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		puts("test");
+	mlx = param;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
+		puts("left");
+	if (mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
+		puts("up");
+	if (mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
+		puts("down");
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
+		puts("right");
 	(void) param;
 }
 
@@ -53,12 +60,14 @@ int	main(void)
 	if (mlx_start(&mlx, &image) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	//handle inputs (escape, arrows, wasd, scroll)
-	mlx_key_hook(mlx, &keyhook, NULL);
+	//scroll functions
+	mlx_loop_hook(mlx, &keyhook, mlx);
 	mlx_scroll_hook(mlx, &scrollhook, NULL);
 	mlx_loop(mlx);
 	//calculate pixel using formula function
 	//calculate every pixel function
-	//scroll functions
 	//move functions
 	//clear function
+	mlx_delete_image(mlx, image);
+	mlx_terminate(mlx);
 }
