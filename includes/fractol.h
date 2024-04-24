@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/24 16:08:12 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:47:27 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ typedef struct s_fractol
 	t_fractals	fractal;
 }	t_fractol;
 
-void	keyhook(void *param);
+void	hook(void *param);
 void	scrollhook(double xdelta, double ydelta, void *param);
 int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
+
+void	render(t_fractol *fract);
 #endif
