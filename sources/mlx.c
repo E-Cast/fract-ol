@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/25 06:17:51 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/25 06:24:59 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 {
 	//maybe add check to make sure it won't over/under flow
 	((t_fractol *)param)->zoom += ydelta / ZOOM_STRENGTH;
-	printf("%f\n", ((t_fractol *)param)->zoom);//
+	// printf("%f\n", ((t_fractol *)param)->zoom);
 	(void) xdelta;
 }
 
@@ -33,7 +33,7 @@ void	hook(void *param)
 	if (frct->zoom != frct->zoom_last)
 	{
 		frct->zoom_last = frct->zoom;
-		printf("render time!\n");
+		// printf("render time!\n");
 		render(frct);
 		if (mlx_image_to_window(mlx, frct->image, 0, 0) < 0)
 		{
