@@ -1,5 +1,6 @@
 SRC				=	main.c \
-					mlx.c
+					mlx.c \
+					render.c
 
 SRC_DIR			:=	sources/
 OBJ_DIR			:=	objects/

@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/24 16:47:27 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/25 06:17:29 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libft.h"
 
 # ifndef WIN_WIDTH
-#  define WIN_WIDTH 1280
+#  define WIN_WIDTH 1000
 # endif
 
 # ifndef WIN_HEIGHT
@@ -26,7 +26,12 @@
 # endif
 
 # ifndef MAX_ITERATIONS
-#  define MAX_ITERATIONS 500
+#  define MAX_ITERATIONS 50
+# endif
+
+//less is more
+# ifndef ZOOM_STRENGTH
+#  define ZOOM_STRENGTH 10
 # endif
 
 
@@ -42,22 +47,24 @@ typedef struct s_ivec2
 	int	y;
 }	t_ivec2;
 
-typedef enum e_fractals
+typedef enum e_fractals_enum
 {
 	MANDEL,
 	JULIA,
 	SHIP,
 	NEWTON,
 	ERROR
-}	t_fractals;
+}	t_fract_e;
 
 typedef struct s_fractol
 {
+	t_fract_e	fractal;
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 	int			x;
 	int			y;
-	t_fractals	fractal;
+	double		zoom_last;
+	double		zoom;
 }	t_fractol;
 
 void	hook(void *param);
