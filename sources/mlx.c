@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/25 16:46:52 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/27 08:52:53 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,29 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 
 	fract = (t_fractol *)param;
 	if (ydelta != 0)
-	{
 		fract->zoom += ydelta / ZOOM_STRENGTH;
-		mlx_get_mouse_pos(fract->mlx, &fract->mx, &fract->my);
-	}
 	// printf("%f\nx:%i/y:%i\n", ((t_fractol *)param)->zoom, fract->mx, fract->my);//
 	(void) xdelta;
 }
 
 void	hook(void *param)
 {
-	t_fractol	*frct;
+	t_fractol	*fract;
 	mlx_t		*mlx;
 
-	frct = (t_fractol *)param;
-	mlx = frct->mlx;
+	fract = (t_fractol *)param;
+	mlx = fract->mlx;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	if (frct->zoom != frct->zoom_last)
+	if (fract->zoom != fract->l_zoom)
 	{
-		frct->zoom_last = frct->zoom;
-		render(frct);
-		if (mlx_image_to_window(mlx, frct->image, 0, 0) < 0)
+		fract->l_zoom = fract->zoom;
+		fract->l_mouse[0] = fract->mouse[0];
+		fract->l_mouse[1] = fract->mouse[1];
+		mlx_get_mouse_pos(fract->mlx, &fract->mouse[0], &fract->mouse[1]);
+		// printf("old:%i/%i\nnew:%i/%i\n", fract->l_mouse[0], fract->l_mouse[1], fract->mouse[0], fract->mouse[1]);
+		render(fract);
+		if (mlx_image_to_window(mlx, fract->image, 0, 0) < 0)
 		{
 			ft_putendl_fd("Error: failed to display image to window",
 				STDERR_FILENO);

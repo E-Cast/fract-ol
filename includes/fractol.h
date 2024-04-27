@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/25 16:38:55 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/27 08:44:22 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ typedef struct s_fractol
 	mlx_image_t	*image;
 	int			x;
 	int			y;
-	double		zoom_last;
 	double		zoom;
-	int32_t		mx;
-	int32_t		my;
+	double		l_zoom;
+	int32_t		mouse[2];
+	int32_t		l_mouse[2];
 }	t_fractol;
 
 void	hook(void *param);
