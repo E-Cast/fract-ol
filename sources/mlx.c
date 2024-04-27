@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/25 16:44:47 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:46:52 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 		fract->zoom += ydelta / ZOOM_STRENGTH;
 		mlx_get_mouse_pos(fract->mlx, &fract->mx, &fract->my);
 	}
-	printf("%f\nx:%i/y:%i\n", ((t_fractol *)param)->zoom, fract->mx, fract->my);//
+	// printf("%f\nx:%i/y:%i\n", ((t_fractol *)param)->zoom, fract->mx, fract->my);//
 	(void) xdelta;
 }
 
@@ -39,7 +39,6 @@ void	hook(void *param)
 	if (frct->zoom != frct->zoom_last)
 	{
 		frct->zoom_last = frct->zoom;
-		// printf("render time!\n");
 		render(frct);
 		if (mlx_image_to_window(mlx, frct->image, 0, 0) < 0)
 		{
