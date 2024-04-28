@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 08:55:29 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:02:13 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	iter_julia(int px, int py, double cx, double cy)
 	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
 	{
-		tmp = zx * zx - zy * zy;
-		zy = 2 * zx * zy + cy;
-		zx = tmp + cx;
+		tmp = zx;
+		zx = zx * zx - zy * zy + cx;
+		zy = 2 * tmp * zy + cy;
 		iter++;
 	}
 	return (iter);
@@ -49,9 +49,9 @@ int	iter_mandel(double zx, double zy)
 	iterations = 0;
 	while (x * x + y * y <= ESC_RAD * ESC_RAD && iterations < MAX_ITERATIONS)
 	{
-		tmp = x * x - y * y + zx;
-		y = 2 * x * y + zy;
-		x = tmp;
+		tmp = x;
+		x = x * x - y * y + zx;
+		y = 2 * tmp * y + zy;
 		iterations++;
 	}
 	return (iterations);
@@ -69,9 +69,9 @@ int	iter_ship(double x, double y)
 	iter = 0;
 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
 	{
-		tmp = zx * zx - zy * zy + x;
-		zy = fabs(2 * zx * zy) + y;
-		zx = tmp;
+		tmp = zx;
+		zx = zx * zx - zy * zy + x;
+		zy = fabs(2 * tmp * zy) + y;
 		iter++;
 	}
 	return (iter);
