@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 06:06:38 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:04:48 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:19:56 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	render_mendel(t_fractol *fract)
 	center_x = 0;
 	center_y = 0;
 	center_y = 0;
-	x_scale = (0.47 - (-2.00)) / (WIN_WIDTH * fract->zoom);
-	y_scale = (1.12 - (-1.12)) / (WIN_HEIGHT * fract->zoom);
-	while (px < WIN_WIDTH)
+	x_scale = (0.47 - (-2.00)) / (WIN_SIZE * fract->zoom);
+	y_scale = (1.12 - (-1.12)) / (WIN_SIZE * fract->zoom);
+	while (px < WIN_SIZE)
 	{
 		py = 0;
-		while (py < WIN_HEIGHT)
+		while (py < WIN_SIZE)
 		{
 			x0 = px * x_scale - 2.00 + center_x;
 			y0 = py * y_scale - 1.12 + center_y;
@@ -62,7 +62,7 @@ void	render_mendel(t_fractol *fract)
 			if (iter == MAX_ITERATIONS)
 				mlx_put_pixel(fract->image, px, py, 0x000000FF);
 			else
-				mlx_put_pixel(fract->image, px, py, 0xFCBE11FF * iter);
+				mlx_put_pixel(fract->image, px, py, PALETTE * iter);
 			py++;
 		}
 		px++;

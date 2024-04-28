@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 06:05:51 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:20:38 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	main(int argc, char **argv)
 	mlx_scroll_hook(fract.mlx, &scrollhook, &fract);
 	fract.l_zoom = 0;
 	fract.zoom = 1;
-	fract.mouse[0] = WIN_WIDTH / 2;
-	fract.mouse[1] = WIN_HEIGHT / 2;
+	fract.mouse[0] = WIN_SIZE / 2;
+	fract.mouse[1] = WIN_SIZE / 2;
 	mlx_loop(fract.mlx);
 	mlx_delete_image(fract.mlx, fract.image);
 	mlx_terminate(fract.mlx);

@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 06:55:27 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:20:12 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	hook(void *param)
 
 int	mlx_start(mlx_t **mlx, mlx_image_t **image)
 {
-	*mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "fractol", 0);
+	*mlx = mlx_init(WIN_SIZE, WIN_SIZE, "fractol", 0);
 	if (!*mlx)
 		return (EXIT_FAILURE);
-	*image = mlx_new_image(*mlx, WIN_WIDTH, WIN_HEIGHT);
+	*image = mlx_new_image(*mlx, WIN_SIZE, WIN_SIZE);
 	if (!*image)
 		return (mlx_terminate(*mlx), EXIT_FAILURE);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:07:20 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:21:35 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 # include <MLX42/MLX42.h>
 # include "libft.h"
 
-# ifndef WIN_WIDTH
-#  define WIN_WIDTH 1000
-# endif
-
-# ifndef WIN_HEIGHT
-#  define WIN_HEIGHT 720
+# ifndef WIN_SIZE
+#  define WIN_SIZE 900
 # endif
 
 # ifndef MAX_ITERATIONS
@@ -36,6 +32,10 @@
 
 # ifndef ESC_RAD
 #  define ESC_RAD 2.0
+# endif
+
+# ifndef PALETTE
+#  define PALETTE 0xFCBE11FF
 # endif
 
 typedef struct s_vec2
