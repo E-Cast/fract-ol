@@ -1,10 +1,6 @@
-SRC				=	julia.c \
-					main.c \
-					mendel.c \
+SRC				=	main.c \
 					mlx.c \
-					render.c \
-					ship.c
-
+					render.c
 SRC_DIR			:=	sources/
 OBJ_DIR			:=	objects/
 SRC				:=	$(addprefix $(SRC_DIR), $(SRC))
