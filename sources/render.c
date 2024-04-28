@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 09:02:13 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:21:44 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	iter_ship(double x, double y)
 	return (iter);
 }
 
-void	render(t_fractol *fract)
+void	render(t_fractol *f)
 {
 	int		px;
 	int		py;
@@ -89,17 +89,17 @@ void	render(t_fractol *fract)
 		py = 0;
 		while (py < WIN_SIZE)
 		{
-			if (fract->fractal == MANDEL)
+			if (f->fractal == MANDEL)
 				iter = iter_mandel(scale(px, -2.0, 0.47),
 						scale(py, -1.12, 1.12));
-			else if (fract->fractal == JULIA)
-				iter = iter_julia(px, py, -0.8, 0.156);
+			else if (f->fractal == JULIA)
+				iter = iter_julia(px, py, f->julia_cx, f->julia_cy);
 			else
 				iter = iter_ship(scale(px, -2.5, 1.0), scale(py, -2.5, 1.0));
 			if (iter == MAX_ITERATIONS)
-				mlx_put_pixel(fract->image, px, py, 0x000000FF);
+				mlx_put_pixel(f->image, px, py, 0x000000FF);
 			else
-				mlx_put_pixel(fract->image, px, py, PALETTE * iter);
+				mlx_put_pixel(f->image, px, py, PALETTE * iter);
 			py++;
 		}
 		px++;

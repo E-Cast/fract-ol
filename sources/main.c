@@ -6,21 +6,30 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:20:38 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:22:02 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	read_input(char *arg)
+int	read_input(int argc, char **argv, t_fractol *fract)
 {
-	if (my_strcmp(arg, "mandel") == 0)
+	if (my_strcmp(argv[1], "mandel") == 0)
 		return (MANDEL);
-	else if (my_strcmp(arg, "julia") == 0)
+	else if (my_strcmp(argv[1], "julia") == 0)
+	{
+		fract->julia_cx = -0.8;
+		fract->julia_cy = 0.156;
+		if (argc == 4)
+		{
+			// fract->j_cx = my_atof;
+			// fract->j_cy = my_atof;
+		}
 		return (JULIA);
-	else if (my_strcmp(arg, "ship") == 0)
+	}
+	else if (my_strcmp(argv[1], "ship") == 0)
 		return (SHIP);
-	else if (my_strcmp(arg, "newton") == 0)
+	else if (my_strcmp(argv[1], "newton") == 0)
 		return (NEWTON);
 	ft_putendl_fd("Error: invalid set", STDERR_FILENO);
 	ft_putendl_fd("Available sets:\n	mandel\n	julia\n	ship\n	newton",
@@ -32,13 +41,13 @@ int	main(int argc, char **argv)
 {
 	t_fractol	fract;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		ft_putendl_fd("Error: fractol missing argument", STDERR_FILENO);
-		ft_putendl_fd("Usage: ./fractol <set>", STDERR_FILENO);
+		ft_putendl_fd("Usage: ./fractol <set> [optional set]", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	fract.fractal = read_input(argv[1]);
+	fract.fractal = read_input(argc, argv, &fract);
 	if (fract.fractal == ERROR)
 		return (EXIT_FAILURE);
 	if (mlx_start(&fract.mlx, &fract.image) == EXIT_FAILURE)

@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 08:48:03 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:20:15 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_fractol
 	int32_t		mouse[2];
 	int32_t		l_mouse[2];
 	double		center[2];
+	double		julia_cx;
+	double		julia_cy;
 }	t_fractol;
 
 void	hook(void *param);
