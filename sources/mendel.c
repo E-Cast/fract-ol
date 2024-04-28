@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 06:06:38 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 06:44:54 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:04:48 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	get_iteration_count(double x0, double y0)
 	x = 0.0;
 	y = 0.0;
 	iterations = 0;
+	//4.0 == escape radius * escape radius?
 	while (x * x + y * y <= 4.0 && iterations < MAX_ITERATIONS)
 	{
 		tmp = x * x - y * y + x0;
