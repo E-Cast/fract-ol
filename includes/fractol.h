@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 06:11:19 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:26:21 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
 void	render(t_fractol *fract);
 void	render_mendel(t_fractol *fract);
-void	render_julia(t_fractol *fract);
+void	render_julia(t_fractol *fract, double R, double cx, double cy);
 
 #endif

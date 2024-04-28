@@ -1,4 +1,6 @@
-SRC				=	main.c \
+SRC				=	julia.c \
+					main.c \
+					mendel.c \
 					mlx.c \
 					render.c
 
