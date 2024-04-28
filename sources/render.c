@@ -6,11 +6,16 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:23:31 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:36:09 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+double	scale(int y, double a, double b)
+{
+	return (y * (b - a) / (WIN_SIZE) + a);
+}
 
 void	render(t_fractol *fract)
 {
