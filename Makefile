@@ -2,7 +2,8 @@ SRC				=	julia.c \
 					main.c \
 					mendel.c \
 					mlx.c \
-					render.c
+					render.c \
+					ship.c
 
 SRC_DIR			:=	sources/
 OBJ_DIR			:=	objects/

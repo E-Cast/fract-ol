@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 06:07:49 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:19:38 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:04:22 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	iter_julia(int px, int py, double cx, double cy)
 	double	zy;
 
 	iter = 0;
-	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE)
-		* WIN_SIZE / WIN_SIZE;
+	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
 	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
 	{
@@ -33,7 +32,6 @@ int	iter_julia(int px, int py, double cx, double cy)
 	return (iter);
 }
 
-//call render_julia(fract, -0.8, 0.156);
 void	render_julia(t_fractol *fract, double cx, double cy)
 {
 	int		px;
