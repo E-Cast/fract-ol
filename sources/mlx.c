@@ -6,12 +6,11 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/27 08:52:53 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:06:28 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "float.h"
 
 void	scrollhook(double xdelta, double ydelta, void *param)
 {
