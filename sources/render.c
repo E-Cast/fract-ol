@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 09:21:44 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 09:31:21 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,6 @@
 double	scale(int y, double a, double b)
 {
 	return (y * (b - a) / (WIN_SIZE) + a);
-}
-
-int	iter_julia(int px, int py, double cx, double cy)
-{
-	int		iter;
-	double	tmp;
-	double	zx;
-	double	zy;
-
-	iter = 0;
-	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
-	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
-	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
-	{
-		tmp = zx;
-		zx = zx * zx - zy * zy + cx;
-		zy = 2 * tmp * zy + cy;
-		iter++;
-	}
-	return (iter);
 }
 
 int	iter_mandel(double zx, double zy)
@@ -55,6 +35,26 @@ int	iter_mandel(double zx, double zy)
 		iterations++;
 	}
 	return (iterations);
+}
+
+int	iter_julia(t_fractol *f, int px, int py)
+{
+	int		iter;
+	double	tmp;
+	double	zx;
+	double	zy;
+
+	iter = 0;
+	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
+	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
+	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
+	{
+		tmp = zx;
+		zx = zx * zx - zy * zy + f->julia_cx;
+		zy = 2 * tmp * zy + f->julia_cy;
+		iter++;
+	}
+	return (iter);
 }
 
 int	iter_ship(double x, double y)
@@ -93,7 +93,7 @@ void	render(t_fractol *f)
 				iter = iter_mandel(scale(px, -2.0, 0.47),
 						scale(py, -1.12, 1.12));
 			else if (f->fractal == JULIA)
-				iter = iter_julia(px, py, f->julia_cx, f->julia_cy);
+				iter = iter_julia(f, px, py);
 			else
 				iter = iter_ship(scale(px, -2.5, 1.0), scale(py, -2.5, 1.0));
 			if (iter == MAX_ITERATIONS)

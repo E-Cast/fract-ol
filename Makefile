@@ -16,7 +16,14 @@ LIBFT_FLAGS		:=	-L $(LIBFT_DIR)
 
 MLX42_DIR		:= MLX42/
 MLX42			:= $(MLX42_DIR)build/libmlx42.a
-MLX42_FLAGS		:= -ldl -lglfw -pthread -lm
+LINUX_FLAGS		:= -ldl -lglfw -pthread -lm
+MAC_FLAGS		:= -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -lm 
+
+ifeq ($(shell uname), Linux)
+MLX42_FLAGS		:= $(LINUX_FLAGS)
+else
+MLX42_FLAGS		:= $(MAC_FLAGS)
+endif
 
 all: $(NAME)
 
@@ -38,6 +45,8 @@ clean:
 re: clean all
 
 libft/Makefile:
+	brew install cmake
+	brew install glfw
 	git submodule init
 	git submodule update --remote
 
@@ -55,6 +64,7 @@ clean_libft:
 MLX42/build/:
 	git submodule init MLX42/
 	git submodule update --remote MLX42/
+
 
 $(MLX42): MLX42/build/
 	@cmake $(MLX42_DIR) -B $(MLX42_DIR)build

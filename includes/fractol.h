@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 09:20:15 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 09:32:00 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,7 @@ int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 void	render(t_fractol *fract);
 double	scale(int y, double a, double b);
 int		iter_mandel(double zx, double zy);
-void	render_mendel(t_fractol *fract);
-int		iter_julia(int px, int py, double cx, double cy);
-void	render_julia(t_fractol *fract, double cx, double cy);
+int		iter_julia(t_fractol *f, int px, int py);
 int		iter_ship(double x, double y);
-void	render_ship(t_fractol *fract);
 
 #endif
