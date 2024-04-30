@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 12:19:46 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:24:28 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,25 @@ int	iter_julia(t_fractol *f, int px, int py)
 	return (iter);
 }
 
-int	iter_ship(double x, double y)
-{
-	double	zx;
-	double	zy;
-	int		iter;
-	double	tmp;
+// int	iter_ship(double x, double y)
+// {
+// 	double	zx;
+// 	double	zy;
+// 	int		iter;
+// 	double	tmp;
 
-	zx = x;
-	zy = y;
-	iter = 0;
-	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
-	{
-		tmp = zx;
-		zx = zx * zx - zy * zy + x;
-		zy = fabs(2 * tmp * zy) + y;
-		iter++;
-	}
-	return (iter);
-}
+// 	zx = x;
+// 	zy = y;
+// 	iter = 0;
+// 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
+// 	{
+// 		tmp = zx;
+// 		zx = zx * zx - zy * zy + x;
+// 		zy = fabs(2 * tmp * zy) + y;
+// 		iter++;
+// 	}
+// 	return (iter);
+// }
 
 void	render(t_fractol *f)
 {
@@ -94,10 +94,10 @@ void	render(t_fractol *f)
 			if (f->fractal == MANDEL)
 				iter = iter_mandel(f, scale(px, -2.0, 0.47),
 						scale(py, -1.12, 1.12));
-			else if (f->fractal == JULIA)
-				iter = iter_julia(f, px, py);
 			else
-				iter = iter_ship(scale(px, -2.5, 1.0), scale(py, -2.5, 1.0));
+				iter = iter_julia(f, px, py);
+			// else
+			// 	iter = iter_ship(scale(px, -2.5, 1.0), scale(py, -2.5, 1.0));
 			if (iter == MAX_ITERATIONS)
 				mlx_put_pixel(f->image, px, py, 0x000000FF);
 			else
