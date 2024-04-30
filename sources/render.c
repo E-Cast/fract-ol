@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 09:31:21 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:56:40 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	iter_julia(t_fractol *f, int px, int py)
 	double	zy;
 
 	iter = 0;
-	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
-	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE);
+	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE) / f->zoom;
+	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE) / f->zoom;
 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
 	{
 		tmp = zx;
