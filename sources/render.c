@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 11:56:40 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:19:46 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	scale(int y, double a, double b)
 	return (y * (b - a) / (WIN_SIZE) + a);
 }
 
-int	iter_mandel(double zx, double zy)
+int	iter_mandel(t_fractol *f, double zx, double zy)
 {
 	double	tmp;
 	double	x;
@@ -26,6 +26,8 @@ int	iter_mandel(double zx, double zy)
 
 	x = 0.0;
 	y = 0.0;
+	zx /= f->zoom;
+	zy /= f->zoom;
 	iterations = 0;
 	while (x * x + y * y <= ESC_RAD * ESC_RAD && iterations < MAX_ITERATIONS)
 	{
@@ -90,7 +92,7 @@ void	render(t_fractol *f)
 		while (py < WIN_SIZE)
 		{
 			if (f->fractal == MANDEL)
-				iter = iter_mandel(scale(px, -2.0, 0.47),
+				iter = iter_mandel(f, scale(px, -2.0, 0.47),
 						scale(py, -1.12, 1.12));
 			else if (f->fractal == JULIA)
 				iter = iter_julia(f, px, py);

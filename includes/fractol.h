@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 11:51:58 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:22:00 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef MAX_ITERATIONS
-#  define MAX_ITERATIONS 50
+#  define MAX_ITERATIONS 25
 # endif
 
 //less is more
@@ -81,7 +81,7 @@ int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
 void	render(t_fractol *fract);
 double	scale(int y, double a, double b);
-int		iter_mandel(double zx, double zy);
+int		iter_mandel(t_fractol *f, double zx, double zy);
 int		iter_julia(t_fractol *f, int px, int py);
 int		iter_ship(double x, double y);
 

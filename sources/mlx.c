@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/28 07:20:12 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:05:36 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 
 	fract = (t_fractol *)param;
 	if (ydelta != 0)
-		fract->zoom += ydelta / ZOOM_STRENGTH;
+	{
+		if ((fract->zoom + ydelta / ZOOM_STRENGTH) >= 0)
+			fract->zoom += ydelta / ZOOM_STRENGTH;
+	}
 	(void) xdelta;
 }
 
