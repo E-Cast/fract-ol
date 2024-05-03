@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 13:49:53 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 10:53:04 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@
 #  define MAX_ITERATIONS 50
 # endif
 
-//less is more
-# ifndef ZOOM_STRENGTH
-#  define ZOOM_STRENGTH 10
-# endif
-
 # ifndef ESC_RAD
 #  define ESC_RAD 2.0
 # endif
@@ -40,8 +35,8 @@
 
 typedef enum e_fractals_enum
 {
-	MANDEL,
 	JULIA,
+	MANDEL,
 	ERROR
 }	t_fract_e;
 
@@ -66,9 +61,7 @@ void	scrollhook(double xdelta, double ydelta, void *param);
 int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
 void	render(t_fractol *fract);
-double	scale(int y, double a, double b);
 int		iter_mandel(t_fractol *f, double zx, double zy);
 int		iter_julia(t_fractol *f, int px, int py);
-// int		iter_ship(double x, double y);
 
 #endif

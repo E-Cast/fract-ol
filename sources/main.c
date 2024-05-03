@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/04/30 19:37:15 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 10:33:23 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	read_input(int argc, char **argv, t_fractol *fract)
 {
-	if (my_strcmp(argv[1], "mandel") == 0)
-		return (MANDEL);
-	else if (my_strcmp(argv[1], "julia") == 0)
+	if (my_strcmp(argv[1], "julia") == 0)
 	{
 		fract->julia_cx = -0.8;
 		fract->julia_cy = 0.156;
@@ -26,6 +24,8 @@ int	read_input(int argc, char **argv, t_fractol *fract)
 			fract->julia_cy = my_atof(argv[3]);
 		return (JULIA);
 	}
+	else if (my_strcmp(argv[1], "mandel") == 0)
+		return (MANDEL);
 	ft_putendl_fd("Error: invalid set", STDERR_FILENO);
 	ft_putendl_fd("Available fractals:\n	mandel\n	julia",
 		STDERR_FILENO);
