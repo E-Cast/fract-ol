@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:08:27 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:36:46 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 #  define PALETTE 0xFCBE11FF
 # endif
 
+# ifndef SENSITIVITY
+#  define SENSITIVITY 0.1
+# endif
+
 typedef enum e_fractals_enum
 {
 	JULIA,
@@ -47,11 +51,13 @@ typedef struct s_fractol
 	t_fract_e	fractal;
 	double		julia_cx;
 	double		julia_cy;
-	bool		updated;
+	bool		update;
 	double		zoom;
+	double		offset_x;
+	double		offset_y;
 }	t_fractol;
 
-int	read_input(int argc, char **argv, t_fractol *fract);
+int		read_input(int argc, char **argv, t_fractol *fract);
 
 void	hook(void *param);
 void	scrollhook(double xdelta, double ydelta, void *param);

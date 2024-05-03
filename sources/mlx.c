@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:11:04 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:32:12 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,37 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 	fract = (t_fractol *)param;
 	if (ydelta != 0)
 	{
-		fract->updated = true;
+		fract->update = true;
 		if (ydelta > 0)
 			fract->zoom = fract->zoom * 2;
 		else
 			fract->zoom = fract->zoom / 2;
 	}
 	(void) xdelta;
+}
+
+void	update_offset(t_fractol	*f)
+{
+	if (mlx_is_key_down(f->mlx, MLX_KEY_LEFT))
+	{
+		f->offset_x -= SENSITIVITY;
+		f->update = true;
+	}
+	if (mlx_is_key_down(f->mlx, MLX_KEY_RIGHT))
+	{
+		f->offset_x += SENSITIVITY;
+		f->update = true;
+	}
+	if (mlx_is_key_down(f->mlx, MLX_KEY_UP))
+	{
+		f->offset_y += SENSITIVITY;
+		f->update = true;
+	}
+	if (mlx_is_key_down(f->mlx, MLX_KEY_DOWN))
+	{
+		f->offset_y -= SENSITIVITY;
+		f->update = true;
+	}
 }
 
 void	hook(void *param)
@@ -37,7 +61,8 @@ void	hook(void *param)
 	mlx = fract->mlx;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	if (fract->updated == true)
+	update_offset(fract);
+	if (fract->update == true)
 	{
 		render(fract);
 		if (mlx_image_to_window(mlx, fract->image, 0, 0) < 0)//
@@ -46,7 +71,7 @@ void	hook(void *param)
 				STDERR_FILENO);
 			mlx_close_window(mlx);
 		}
-		fract->updated = false;
+		fract->update = false;
 	}
 }
 

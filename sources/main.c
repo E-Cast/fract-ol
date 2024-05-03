@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:19:46 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:03:19 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:25:26 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (mlx_start(&fract.mlx, &fract.image) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	fract.updated = true;
+	fract.update = true;
 	fract.zoom = 1;
+	fract.offset_x = 0;
+	fract.offset_y = 0;
 	mlx_loop_hook(fract.mlx, &hook, &fract);
 	mlx_scroll_hook(fract.mlx, &scrollhook, &fract);
 	mlx_loop(fract.mlx);

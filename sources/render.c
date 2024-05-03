@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 10:53:28 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:36:26 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	iter_mandel(t_fractol *f, double zx, double zy)
 
 	x = 0.0;
 	y = 0.0;
-	zx = (zx * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0)) / f->zoom;
-	zy = (zy * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12) / f->zoom;
+	zx = (zx * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0) + f->offset_x) / f->zoom;
+	zy = (zy * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12 + f->offset_y) / f->zoom;
 	iterations = 0;
 	while (x * x + y * y <= ESC_RAD * ESC_RAD && iterations < MAX_ITERATIONS)
 	{
@@ -42,8 +42,10 @@ int	iter_julia(t_fractol *f, int px, int py)
 	double	zy;
 
 	iter = 0;
-	zx = (px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE) / f->zoom;
-	zy = (py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE) / f->zoom;
+	zx = ((px - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE)
+			+ (f->offset_x * f->zoom)) / f->zoom;
+	zy = ((py - WIN_SIZE / 2.0) * (2 * ESC_RAD / WIN_SIZE)
+			- (f->offset_y * f->zoom)) / f->zoom;
 	while (zx * zx + zy * zy < ESC_RAD * ESC_RAD && iter < MAX_ITERATIONS)
 	{
 		tmp = zx;
