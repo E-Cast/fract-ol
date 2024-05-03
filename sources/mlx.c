@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 10:53:13 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/03 10:58:28 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	hook(void *param)
 	if (fract->zoom != fract->l_zoom)
 	{
 		fract->l_zoom = fract->zoom;
-		fract->l_mouse[0] = fract->mouse[0];
-		fract->l_mouse[1] = fract->mouse[1];
-		mlx_get_mouse_pos(fract->mlx, &fract->mouse[0], &fract->mouse[1]);
+		// fract->l_mouse[0] = fract->mouse[0];
+		// fract->l_mouse[1] = fract->mouse[1];
+		// mlx_get_mouse_pos(fract->mlx, &fract->mouse[0], &fract->mouse[1]);
 		render(fract);
 		if (mlx_image_to_window(mlx, fract->image, 0, 0) < 0)
 		{
