@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:32:12 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:03:28 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,34 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 			fract->zoom = fract->zoom * 2;
 		else
 			fract->zoom = fract->zoom / 2;
+		fract->update = true;
 	}
 	(void) xdelta;
 }
 
 void	update_offset(t_fractol	*f)
 {
+	double	scaled_sens;
+
+	scaled_sens = SENSITIVITY / f->zoom;
 	if (mlx_is_key_down(f->mlx, MLX_KEY_LEFT))
 	{
-		f->offset_x -= SENSITIVITY;
+		f->offset_x -= scaled_sens;
 		f->update = true;
 	}
 	if (mlx_is_key_down(f->mlx, MLX_KEY_RIGHT))
 	{
-		f->offset_x += SENSITIVITY;
+		f->offset_x += scaled_sens;
 		f->update = true;
 	}
 	if (mlx_is_key_down(f->mlx, MLX_KEY_UP))
 	{
-		f->offset_y += SENSITIVITY;
+		f->offset_y += scaled_sens;
 		f->update = true;
 	}
 	if (mlx_is_key_down(f->mlx, MLX_KEY_DOWN))
 	{
-		f->offset_y -= SENSITIVITY;
+		f->offset_y -= scaled_sens;
 		f->update = true;
 	}
 }

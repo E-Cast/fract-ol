@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:36:26 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 09:53:39 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	iter_mandel(t_fractol *f, double zx, double zy)
 
 	x = 0.0;
 	y = 0.0;
-	zx = (zx * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0) + f->offset_x) / f->zoom;
-	zy = (zy * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12 + f->offset_y) / f->zoom;
+	zx = (zx * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0) + (f->offset_x * f->zoom)) / f->zoom;
+	zy = (zy * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12 + (f->offset_y * f->zoom)) / f->zoom;
 	iterations = 0;
 	while (x * x + y * y <= ESC_RAD * ESC_RAD && iterations < MAX_ITERATIONS)
 	{
