@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/04 14:37:50 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:01:35 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,21 @@ typedef struct s_fractol
 	double		offset_y;
 }	t_fractol;
 
+/*main.c*/
+
 int		read_input(int argc, char **argv, t_fractol *fract);
 
-void	hook(void *param);
+/*mlx.c*/
+
 void	scrollhook(double xdelta, double ydelta, void *param);
+void	update_offset(t_fractol	*f);
+void	hook(void *param);
 int		mlx_start(mlx_t **mlx, mlx_image_t **image);
 
-int		iter_julia(t_fractol *f, int px, int py);
+/*render.c*/
+
 int		iter_mandel(t_fractol *f, double zx, double zy);
+int		iter_julia(t_fractol *f, int px, int py);
 void	render(t_fractol *fract);
 
 #endif

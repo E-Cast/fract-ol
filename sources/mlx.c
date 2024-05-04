@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/04 14:35:45 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:07:20 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,6 @@ void	hook(void *param)
 	if (fract->update == true)
 	{
 		render(fract);
-		if (mlx_image_to_window(mlx, fract->image, 0, 0) < 0)//
-		{
-			ft_putendl_fd("Error: failed to display image to window",
-				STDERR_FILENO);
-			mlx_close_window(mlx);
-		}
 		fract->update = false;
 	}
 }
@@ -110,10 +104,16 @@ void	hook(void *param)
 int	mlx_start(mlx_t **mlx, mlx_image_t **image)
 {
 	*mlx = mlx_init(WIN_SIZE, WIN_SIZE, "fractol", 0);
-	if (!*mlx)//
+	if (!*mlx)
 		return (EXIT_FAILURE);
 	*image = mlx_new_image(*mlx, WIN_SIZE, WIN_SIZE);
-	if (!*image)//
+	if (!*image)
 		return (mlx_terminate(*mlx), EXIT_FAILURE);
+	if (mlx_image_to_window(*mlx, *image, 0, 0) == -1)
+	{
+		mlx_delete_image(*mlx, *image);
+		mlx_terminate(*mlx);
+		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
