@@ -6,12 +6,20 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 00:40:31 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/04 10:03:28 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:35:45 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/**
+ * @brief Hook used to detect scrolling input.
+ * 
+ * @param xdelta 
+ * @param ydelta 
+ * @param param void pointer to the fractol struct used 
+ * to store general program data.
+ */
 void	scrollhook(double xdelta, double ydelta, void *param)
 {
 	t_fractol	*fract;
@@ -29,6 +37,11 @@ void	scrollhook(double xdelta, double ydelta, void *param)
 	(void) xdelta;
 }
 
+/**
+ * @brief Update the offset used to reder the fractal with user input.
+ * 
+ * @param f fractol struct containing general program data.
+ */
 void	update_offset(t_fractol	*f)
 {
 	double	scaled_sens;
@@ -56,6 +69,13 @@ void	update_offset(t_fractol	*f)
 	}
 }
 
+/**
+ * @brief Executes actions every frames, like detecting 
+ * user input or calling for the fractal to be rendered.
+ * 
+ * @param param void pointer to the fractol struct used 
+ * to store general program data.
+ */
 void	hook(void *param)
 {
 	t_fractol	*fract;
@@ -79,6 +99,14 @@ void	hook(void *param)
 	}
 }
 
+/**
+ * @brief Safely initialize the mlx42 structs.
+ * 
+ * @param mlx Address of the mlx struct to initialize.
+ * @param image Address of the image struct to initialize.
+ * @retval EXIT_FAILURE if either mlx or image fail to be initialized.
+ * @retval EXIT_SUCCESS on success.
+ */
 int	mlx_start(mlx_t **mlx, mlx_image_t **image)
 {
 	*mlx = mlx_init(WIN_SIZE, WIN_SIZE, "fractol", 0);

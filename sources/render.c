@@ -6,13 +6,22 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/04 09:53:39 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:57:20 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	iter_mandel(t_fractol *f, double zx, double zy)
+/**
+ * @brief Iterates the mandelbrot formula over and over until it 
+ * reaches the maximum number of iterations or it escapes.
+ * 
+ * @param f fractol struct containing general program data.
+ * @param px X coordinate of the pixel being iterated over.
+ * @param py Y coordinate of the pixel being iterated over.
+ * @retval The number of iterations.
+ */
+int	iter_mandel(t_fractol *f, double px, double py)
 {
 	double	tmp;
 	double	x;
@@ -21,19 +30,30 @@ int	iter_mandel(t_fractol *f, double zx, double zy)
 
 	x = 0.0;
 	y = 0.0;
-	zx = (zx * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0) + (f->offset_x * f->zoom)) / f->zoom;
-	zy = (zy * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12 + (f->offset_y * f->zoom)) / f->zoom;
+	px = (px * (0.47 - (-2.0)) / (WIN_SIZE) + (-2.0)
+			+ (f->offset_x * f->zoom)) / f->zoom;
+	py = (py * ((-1.12) - 1.12) / (WIN_SIZE) + 1.12
+			+ (f->offset_y * f->zoom)) / f->zoom;
 	iterations = 0;
 	while (x * x + y * y <= ESC_RAD * ESC_RAD && iterations < MAX_ITERATIONS)
 	{
 		tmp = x;
-		x = x * x - y * y + zx;
-		y = 2 * tmp * y + zy;
+		x = x * x - y * y + px;
+		y = 2 * tmp * y + py;
 		iterations++;
 	}
 	return (iterations);
 }
 
+/**
+ * @brief Iterates the julia formula over and over until it 
+ * reaches the maximum number of iterations or it escapes.
+ * 
+ * @param f fractol struct containing general program data.
+ * @param px X coordinate of the pixel being iterated over.
+ * @param py Y coordinate of the pixel being iterated over.
+ * @retval The number of iterations.
+ */
 int	iter_julia(t_fractol *f, int px, int py)
 {
 	int		iter;
@@ -56,6 +76,12 @@ int	iter_julia(t_fractol *f, int px, int py)
 	return (iter);
 }
 
+/**
+ * @brief Calls the correct iteration function over every pixel of the screen
+ * and sets their color acording to the number of iterations returned.
+ * 
+ * @param f fractol struct containing general program data.
+ */
 void	render(t_fractol *f)
 {
 	int		px;

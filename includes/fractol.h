@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/03 11:36:46 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:37:50 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@
 # endif
 
 # ifndef SENSITIVITY
-#  define SENSITIVITY 0.1
+#  define SENSITIVITY 0.5
 # endif
 
 typedef enum e_fractals_enum
 {
 	JULIA,
-	MANDEL,
-	ERROR
+	MANDEL
 }	t_fract_e;
 
 typedef struct s_fractol
