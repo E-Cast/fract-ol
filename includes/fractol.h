@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:20:15 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/05 10:24:13 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/05 10:42:43 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef MAX_ITERATIONS
-#  define MAX_ITERATIONS 50
+#  define MAX_ITERATIONS 100
 # endif
 
 # ifndef ESC_RAD

@@ -6,7 +6,7 @@
 /*   By: ecastong <ecastong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 02:51:34 by ecastong          #+#    #+#             */
-/*   Updated: 2024/05/04 14:57:20 by ecastong         ###   ########.fr       */
+/*   Updated: 2024/05/05 10:42:07 by ecastong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	iter_julia(t_fractol *f, int px, int py)
 	{
 		tmp = zx;
 		zx = zx * zx - zy * zy + f->julia_cx;
-		zy = 2 * tmp * zy + f->julia_cy;
+		zy = 2 * tmp * zy - f->julia_cy;
 		iter++;
 	}
 	return (iter);
